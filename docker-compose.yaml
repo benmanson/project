@@ -1,0 +1,22 @@
+version: "3.8"
+
+services:
+  nginx:
+    container_name: "nginx"
+    image: nginx
+    volumes:
+      # Override the nginx default site with my site
+      - ./config/nginx/dev.conf:/etc/nginx/conf.d/default.conf:ro
+      # Write logs to local dir for inspection
+      - ./log/nginx:/var/log/nginx
+    ports:
+      - "8080:80"
+
+  backend:
+    container_name: "backend"
+    build:
+      context: "."
+      dockerfile: "backend/Dockerfile"
+    volumes:
+      # Write logs to local dir for inspection
+      - ./log/gunicorn:/var/log/gunicorn
