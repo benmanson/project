@@ -7,4 +7,5 @@ bind = "0.0.0.0:8000"
 workers = 2
 
 reload = True
+reload_extra_files = "/app/templates"
 capture_output = True
