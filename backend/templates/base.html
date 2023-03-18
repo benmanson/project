@@ -1,0 +1,65 @@
+{% load bootstrap5 %}
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/png" href="{% static 'images/favicon.ico' %}"/>
+    <title>Ben Manson{% block title %}{% endblock %}</title>
+    {% block extra_head %}{% endblock %}
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top">
+      <div class="container-xxl">
+        <a class="navbar-brand" href="/">Ben Manson</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Dropdown
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li>
+              </ul>
+            </li>
+            {% if request.user.is_authenticated %}
+            <li class="nav-item">
+              <a class="nav-link" href="/auth/logout/">Logout</a>
+            </li>
+            {% else %}
+            <li class="nav-item">
+              <a class="nav-link" href="/admin/login">Login</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Register</a>
+            </li>
+            {% endif %}
+          </ul>
+          <form class="d-flex" action="/search" role="search">
+            <input class="form-control me-2" name="q" id="searchField" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-secondary" type="submit">Search</button>
+          </form>
+        </div>
+      </div>
+    </nav>
+    <div id="content"></div>
+    <script>
+      const params = new URLSearchParams(window.location.search);
+      document.getElementById('searchField').value = params.get("q");
+    </script>
+    {% block body_scripts %}{% endblock %}
+  </body>
+</html>
