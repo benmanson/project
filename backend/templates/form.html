@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% load bootstrap5 %}
+
+{% block content %}
+<h2>{% if form_title %}{{form_title}}{% else %}Form{% endif %}</h2>
+<hr>
+<br>
+<form action="{{request.path}}" method="post" class="form" {% if takes_files %}enctype="multipart/form-data"{% endif %}>
+  {% csrf_token %}
+
+  {% bootstrap_form form %}
+  {% bootstrap_button button_type="submit" content="Submit" %}
+</form>
+<br>
+{% endblock %}
