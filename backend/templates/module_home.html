@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% load bootstrap5 %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+  <div class="row px-5 gap-2">
+    {% bootstrap_button button_type="link" button_class="btn-success" href="/films/add/" content="Add new" %}
+    <h2>Showcase</h2>
+    <hr><br>
+    <div class="col text-center"><img class="poster" src="{% static 'images/test.jpg' %}"/><br>The Joker<br>4 October 2019<br>Avg Rating: 4.2</div>
+    <div class="col text-center"><img class="poster" src="{% static 'images/test.jpg' %}"/><br>The Chronicles of Narnia: The Lion, The Witch, and the Wardrobe<br>4 October 2019<br>Avg Rating: 4.2</div>
+    <div class="col text-center"><img class="poster" src="{% static 'images/test.jpg' %}"/><br>The Joker<br>4 October 2019<br>Avg Rating: 4.2</div>
+    <div class="col text-center"><img class="poster" src="{% static 'images/test.jpg' %}"/><br>The Joker<br>4 October 2019<br>Avg Rating: 4.2</div>
+    <div class="col text-center"><img class="poster" src="{% static 'images/test.jpg' %}"/><br>The Joker<br>4 October 2019<br>Avg Rating: 4.2</div>
+    <div class="col text-center"><img class="poster" src="{% static 'images/test.jpg' %}"/><br>The Joker<br>4 October 2019<br>Avg Rating: 4.2</div>
+    <div class="col text-center"><img class="poster" src="{% static 'images/test.jpg' %}"/><br>The Joker<br>4 October 2019<br>Avg Rating: 4.2</div>
+  </div>
+  <div class="row px-5 pt-5">
+    <h2>Recent releases</h2>
+    <hr><br>
+    <div class="col text-center"><img class="poster" src="{% static 'images/test.jpg' %}"/><br>The Joker<br>4 October 2019<br>Avg Rating: 4.2</div>
+    <div class="col text-center"><img class="poster" src="{% static 'images/test.jpg' %}"/><br>The Chronicles of Narnia: The Lion, The Witch, and the Wardrobe<br>4 October 2019<br>Avg Rating: 4.2</div>
+    <div class="col text-center"><img class="poster" src="{% static 'images/test.jpg' %}"/><br>The Joker<br>4 October 2019<br>Avg Rating: 4.2</div>
+    <div class="col text-center"><img class="poster" src="{% static 'images/test.jpg' %}"/><br>The Joker<br>4 October 2019<br>Avg Rating: 4.2</div>
+    <div class="col text-center"><img class="poster" src="{% static 'images/test.jpg' %}"/><br>The Joker<br>4 October 2019<br>Avg Rating: 4.2</div>
+    <div class="col text-center"><img class="poster" src="{% static 'images/test.jpg' %}"/><br>The Joker<br>4 October 2019<br>Avg Rating: 4.2</div>
+    <div class="col text-center"><img class="poster" src="{% static 'images/test.jpg' %}"/><br>The Joker<br>4 October 2019<br>Avg Rating: 4.2</div>
+  </div>
+  <div class="row p-5">
+    <h2>Recommendations</h2>
+    <hr><br>
+    <div class="col text-center"><img class="poster" src="{% static 'images/test.jpg' %}"/><br>The Joker<br>4 October 2019<br>Avg Rating: 4.2</div>
+    <div class="col text-center"><img class="poster" src="{% static 'images/test.jpg' %}"/><br>The Chronicles of Narnia: The Lion, The Witch, and the Wardrobe<br>4 October 2019<br>Avg Rating: 4.2</div>
+    <div class="col text-center"><img class="poster" src="{% static 'images/test.jpg' %}"/><br>The Joker<br>4 October 2019<br>Avg Rating: 4.2</div>
+    <div class="col text-center"><img class="poster" src="{% static 'images/test.jpg' %}"/><br>The Joker<br>4 October 2019<br>Avg Rating: 4.2</div>
+    <div class="col text-center"><img class="poster" src="{% static 'images/test.jpg' %}"/><br>The Joker<br>4 October 2019<br>Avg Rating: 4.2</div>
+    <div class="col text-center"><img class="poster" src="{% static 'images/test.jpg' %}"/><br>The Joker<br>4 October 2019<br>Avg Rating: 4.2</div>
+    <div class="col text-center"><img class="poster" src="{% static 'images/test.jpg' %}"/><br>The Joker<br>4 October 2019<br>Avg Rating: 4.2</div>
+  </div>
+</div>
+{% endblock %}
