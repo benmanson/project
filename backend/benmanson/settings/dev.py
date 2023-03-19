@@ -44,7 +44,8 @@ INSTALLED_APPS = [
     "bootstrap5",
 
     "registration",
-    "frontend"
+    "frontend",
+    "films"
 ]
 
 MIDDLEWARE = [
