@@ -42,5 +42,12 @@ services:
       MYSQL_PASSWORD: djangopw
       MYSQL_DATABASE: benmanson
 
+  smtp:
+    restart: unless-stopped
+    container_name: "mailhog"
+    image: mailhog/mailhog
+    ports:
+      - "8025:8025"
+
 volumes:
   dev-static:

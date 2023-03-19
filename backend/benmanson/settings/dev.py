@@ -169,3 +169,10 @@ CACHES = {
         'BACKEND': 'django.core.cache.backends.dummy.DummyCache',
    }
 }
+
+
+# Email settings
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+DEFAULT_FROM_EMAIL = "ben@localhost"
+EMAIL_HOST = "smtp"
+EMAIL_PORT = 1025
