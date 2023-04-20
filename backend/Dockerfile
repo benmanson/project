@@ -13,6 +13,12 @@ RUN wget https://github.com/twbs/bootstrap/releases/download/v5.3.0-alpha1/boots
 RUN unzip /app/static/bootstrap-5.3.0-alpha1-dist.zip -d /app/static
 RUN rm -rf /app/static/bootstrap-5.3.0-alpha1-dist*
 
+# Download and install AWS CLI
+RUN wget "https://awscli.amazonaws.com/awscli-exe-linux-$(uname -m).zip" -O "awscliv2.zip"
+RUN unzip awscliv2.zip
+RUN ./aws/install
+RUN rm -rf aws*
+
 RUN mkdir -pv /var/{log,run}/gunicorn
 
 ENTRYPOINT [ "sh", "docker-entrypoint.sh" ]

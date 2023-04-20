@@ -21,6 +21,8 @@ services:
     build:
       context: "."
       dockerfile: "backend/Dockerfile"
+    environment:
+      - AWS_PROFILE=${AWS_PROFILE}
     volumes:
       # Write logs to local dir for inspection
       - ./log/gunicorn:/var/log/gunicorn
@@ -28,6 +30,8 @@ services:
       - ./backend:/app
       # Mount shared static directory to STATIC_ROOT in django
       - dev-static:/var/www/localhost/static
+      # Mount .aws directory as a read-only volume
+      - $HOME/.aws/credentials:/root/.aws/credentials:ro
 
   db:
     restart: unless-stopped

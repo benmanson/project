@@ -1,3 +1,4 @@
+boto3
 django
 django-bootstrap-v5
 gunicorn
