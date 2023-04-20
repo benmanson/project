@@ -1,3 +1,5 @@
+import glob
+
 accesslog = errorlog = "/var/log/gunicorn/dev.log"
 
 loglevel = "debug"
@@ -8,8 +10,7 @@ workers = 2
 
 capture_output = True
 reload = True
-reload_extra_files = [
-    "/app/**/*.html",
-    "/app/**/*.css",
-    "/app/**/*.js",
-]
+reload_extra_files = \
+    glob.glob("/app/**/*.html") + \
+    glob.glob("/app/**/*.js") + \
+    glob.glob("/app/**/*.css")
