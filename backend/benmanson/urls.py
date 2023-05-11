@@ -22,10 +22,6 @@ urlpatterns = [
     path('auth/', include('django.contrib.auth.urls')),
 
     path('registration/', include('registration.urls')),
-    path('films/', include('films.urls')),
 
-    path("health", TemplateView.as_view(template_name="healthcheck.json", content_type="text/json"), name="health_check"),
     path("robots.txt", TemplateView.as_view(template_name="robots.txt", content_type="text/plain"), name="robots"),
-
-    path("", include("frontend.urls")),
 ]
