@@ -23,7 +23,7 @@ class RegisterView(CreateView):
 
     def get(self, request, *args, **kwargs):
         if request.user.is_authenticated:
-            return redirect("/")
+            return redirect("/admin/")
         return super().get(request, *args, **kwargs)
 
     def post(self, request, *args, **kwargs):
@@ -33,6 +33,7 @@ class RegisterView(CreateView):
         if form.is_valid():
             user = form.save(commit=False)
             user.is_active = False
+            user.is_staff = True
             user.save()
 
             current_site = get_current_site(request)
@@ -65,6 +66,6 @@ def activate(request, uidb64, token):
     if user is not None and utils.account_activation_token.check_token(user, token):
         user.is_active = True
         user.save()
-        return redirect("/")
+        return redirect(settings.LOGIN_URL)
     else:
         return HttpResponse("Activation link is invalid!")
