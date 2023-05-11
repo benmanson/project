@@ -1,17 +1,13 @@
-FROM python:3.10
+FROM python:3.11.3-bullseye
+RUN rm /bin/sh && ln -s /bin/bash /bin/sh
+
+ENV PYTHONDONTWRITEBYTECODE 1
 
 WORKDIR /app
 
-RUN apt-get update -y && apt-get install -y tree netcat unzip
+RUN apt-get update -y; apt-get install -y tree netcat unzip
 
-COPY backend/ .
 COPY config/gunicorn /usr/src/app/config
-
-# Download bootstrap and jquery
-RUN wget https://code.jquery.com/jquery-3.6.4.min.js -O /app/static/js/jquery.3.6.4.min.js
-RUN wget https://github.com/twbs/bootstrap/releases/download/v5.3.0-alpha1/bootstrap-5.3.0-alpha1-dist.zip -O /app/static/bootstrap-5.3.0-alpha1-dist.zip
-RUN unzip /app/static/bootstrap-5.3.0-alpha1-dist.zip -d /app/static
-RUN rm -rf /app/static/bootstrap-5.3.0-alpha1-dist*
 
 # Download and install AWS CLI
 RUN wget "https://awscli.amazonaws.com/awscli-exe-linux-$(uname -m).zip" -O "awscliv2.zip"
@@ -19,6 +15,7 @@ RUN unzip awscliv2.zip
 RUN ./aws/install
 RUN rm -rf aws*
 
-RUN mkdir -pv /var/{log,run}/gunicorn
+RUN mkdir -p /var/log/gunicorn
+RUN mkdir -p /var/run/gunicorn
 
 ENTRYPOINT [ "sh", "docker-entrypoint.sh" ]
